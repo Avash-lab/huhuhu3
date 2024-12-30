@@ -1,0 +1,103 @@
+:root {
+    --bg-color: #f8e1f4;
+    --heart-color: #ff4d6d;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  body {
+    margin: 0;
+    height: 100vh;
+    background: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+  }
+  
+  .card {
+    background: var(--card-bg);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px var(--shadow-color);
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .card .heart {
+    position: relative;
+    margin: 0 auto 20px auto;
+    width: 100px;
+    height: 100px;
+    background: var(--heart-color);
+    transform: rotate(45deg);
+    animation: pulse 1.5s infinite;
+  }
+  
+  .card .heart::before,
+  .card .heart::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: var(--heart-color);
+    border-radius: 50%;
+  }
+  
+  .card .heart::before {
+    top: -50px;
+    left: 0;
+  }
+  
+  .card .heart::after {
+    left: 50px;
+    top: 0;
+  }
+  
+  .card .message {
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.5;
+    animation: fadeIn 2s ease-in;
+  }
+  
+  /* Animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1) rotate(45deg);
+    }
+    50% {
+      transform: scale(1.2) rotate(45deg);
+    }
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
